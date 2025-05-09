@@ -13,6 +13,7 @@
   boot.loader.grub = {
     efiSupport = true;
     efiInstallAsRemovable = true;
+    device = "/dev/nvme0n1";
   };
 
   networking.hostName = "sierpinski-23"; # CHANGE ME.
@@ -29,11 +30,11 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "de";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
+  # console = {
+  # font = "Lat2-Terminus16";
+  # keyMap = "de";
+  # useXkbConfig = true; # use xkb.options in tty.
+  # };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;

@@ -5,9 +5,7 @@
   ...
 }:
 {
-  imports = [
-    (import ../../modules/home-manager/zellij-ps.nix)
-  ]; # imports = builtins.attrValues outputs.homeManagerModules;
+  imports = builtins.attrValues outputs.homeManagerModules;
   nixpkgs = {
     # You can add overlays here
     overlays = [

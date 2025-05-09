@@ -16,10 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-9e9486b.url = "github:nixos/nixpkgs/9e9486ba0142e24a6be35a12384a42982c65d963";
-    nixpkgs-locked.url = "github:nixos/nixpkgs/2744d988fa116fc6d46cdfa3d1c936d0abd7d121";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     agenix.url = "github:ryantm/agenix";
 
@@ -84,18 +80,18 @@
             agenix.nixosModules.default
           ];
         };
-        penrose-512 = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-            hostname = "penrose-512";
-          };
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/penrose-512
-            inputs.disko.nixosModules.disko
-            agenix.nixosModules.default
-          ];
-        };
+        # penrose-512 = nixpkgs.lib.nixosSystem {
+        # specialArgs = {
+        # inherit inputs outputs;
+        # hostname = "penrose-512";
+        # };
+        # system = "x86_64-linux";
+        # modules = [
+        # ./hosts/penrose-512
+        # inputs.disko.nixosModules.disko
+        # agenix.nixosModules.default
+        # ];
+        # };
       };
       homeConfigurations = {
         "lstr-261@penrose-512" = home-manager.lib.homeManagerConfiguration {

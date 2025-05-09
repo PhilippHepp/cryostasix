@@ -92,27 +92,4 @@
       init.defaultBranch = "master";
     };
   };
-  programs.zellij-ps = {
-    enable = true;
-    projectFolders = [
-      "${config.home.homeDirectory}/p/c"
-      "${config.home.homeDirectory}/p"
-      "${config.home.homeDirectory}/.config"
-    ];
-    layout = ''
-      layout {
-          pane size=1 borderless=true {
-              plugin location="zellij:tab-bar"
-          }
-          pane size="70%" command="nvim"
-          pane split_direction="vertical" {
-              pane
-              pane command="unimatrix"
-          }
-          pane size=1 borderless=true {
-              plugin location="zellij:status-bar"
-          }
-      }
-    '';
-  };
 }

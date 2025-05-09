@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./fish.nix
     ./skim.nix
@@ -32,20 +33,26 @@
     withPython3 = true;
   };
 
-  programs.bat = {enable = true;};
+  programs.bat = {
+    enable = true;
+  };
 
   programs.direnv = {
     enable = true;
     enableNushellIntegration = true;
-    nix-direnv.enable =
-      true;
+    nix-direnv.enable = true;
   };
 
   programs.eza = {
     enable = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
-    extraOptions = ["-l" "--icons" "--git" "-a"];
+    extraOptions = [
+      "-l"
+      "--icons"
+      "--git"
+      "-a"
+    ];
   };
 
   programs.lf = {
@@ -85,7 +92,6 @@
     rocmPackages.rocminfo
     rocmPackages.rocm-runtime
     tldr
-    pomodoro-timer
     trash-cli
     unimatrix
     unzip
@@ -93,7 +99,6 @@
     wttrbar
     wireguard-tools
     yazi
-    zellij-ps
     zip
   ];
 }

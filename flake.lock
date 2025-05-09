@@ -221,70 +221,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-9e9486b": {
-      "locked": {
-        "lastModified": 1744046669,
-        "narHash": "sha256-7PIbZBxiHW9pRKswRKrrvY0oZ0+3avDJktbLCJQTNao=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "9e9486ba0142e24a6be35a12384a42982c65d963",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "9e9486ba0142e24a6be35a12384a42982c65d963",
-        "type": "github"
-      }
-    },
-    "nixpkgs-locked": {
-      "locked": {
-        "lastModified": 1739661218,
-        "narHash": "sha256-hEGW0SKD0ORTEmoTuEEONxgENP5kMqe+NCtJug0U6R0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "2744d988fa116fc6d46cdfa3d1c936d0abd7d121",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "2744d988fa116fc6d46cdfa3d1c936d0abd7d121",
-        "type": "github"
-      }
-    },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1746535540,
-        "narHash": "sha256-qM8w1mWaktQh0/KVRCk97gbJnqFvi3PdEYzkIcSKsk4=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "e8f532dea2f4470f8e78da764bb6d2fae07ec4ce",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1746422338,
-        "narHash": "sha256-NTtKOTLQv6dPfRe00OGSywg37A1FYqldS6xiNmqBUYc=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5b35d248e9206c1f3baf8de6a7683fee126364aa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-24.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1736344531,
@@ -341,10 +277,6 @@
         "home-manager": "home-manager_2",
         "hyprpanel": "hyprpanel",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-9e9486b": "nixpkgs-9e9486b",
-        "nixpkgs-locked": "nixpkgs-locked",
-        "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-stable": "nixpkgs-stable",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor"
       }
     },
