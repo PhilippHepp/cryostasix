@@ -3,11 +3,11 @@
   outputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
-    (import
-      ../../modules/home-manager/zellij-ps.nix)
-  ]; #imports = builtins.attrValues outputs.homeManagerModules;
+    (import ../../modules/home-manager/zellij-ps.nix)
+  ]; # imports = builtins.attrValues outputs.homeManagerModules;
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -42,7 +42,10 @@
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };
