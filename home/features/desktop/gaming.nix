@@ -4,18 +4,20 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.gaming;
-in {
-  options.features.desktop.gaming.enable =
-    mkEnableOption "install gaming related stuff";
+in
+{
+  options.features.desktop.gaming.enable = mkEnableOption "install gaming related stuff";
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       gamescope
       goverlay
       mangohud
-      protonup-ng
+      protonup-qt
+      lutris
     ];
   };
 }

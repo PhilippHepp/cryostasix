@@ -4,11 +4,12 @@
   pkgs,
   ...
 }:
-with lib; let
-  cfg = config.features.desktop.office;
-in {
-  options.features.desktop.coding.enable =
-    mkEnableOption "install coding related stuff";
+with lib;
+let
+  cfg = config.features.desktop.coding;
+in
+{
+  options.features.desktop.coding.enable = mkEnableOption "install coding related stuff";
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -29,25 +30,30 @@ in {
         };
         lsp = {
           rust_analyzer = {
-            binary = {path_lookup = true;};
+            binary = {
+              path_lookup = true;
+            };
           };
         };
         languages = {
           Nix = {
-            language_servers = ["nixd"];
+            language_servers = [ "nixd" ];
             formatter = {
               external = {
                 command = "alejandra";
-                arguments = ["-q" "-"];
+                arguments = [
+                  "-q"
+                  "-"
+                ];
               };
             };
           };
           Python = {
-            language_servers = ["pyright"];
+            language_servers = [ "pyright" ];
             formatter = {
               external = {
                 command = "black";
-                arguments = ["-"];
+                arguments = [ "-" ];
               };
             };
           };
@@ -76,16 +82,22 @@ in {
           {
             host = "152.53.85.162";
             nickname = "m3-atlas";
-            args = ["-i" "~/.ssh/m3tam3re"];
+            args = [
+              "-i"
+              "~/.ssh/m3tam3re"
+            ];
           }
           {
             host = "95.217.189.186";
             port = 2222;
             nickname = "self-host-playbook";
-            args = ["-i" "~/.ssh/self-host-playbook"];
+            args = [
+              "-i"
+              "~/.ssh/self-host-playbook"
+            ];
             "projects" = [
               {
-                paths = ["/etc/nixos/current-systemconfig"];
+                paths = [ "/etc/nixos/current-systemconfig" ];
               }
             ];
           }

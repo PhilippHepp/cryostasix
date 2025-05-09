@@ -37,77 +37,75 @@
     };
   };
 
-  outputs = {
-    self,
-    agenix,
-    dotfiles,
-    home-manager,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    systems = [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    packages =
-      forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-    overlays = import ./overlays {inherit inputs outputs;};
-    homeManagerModules = import ./modules/home-manager;
-    nixosConfigurations = {
-      m3-ares = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs;
-          hostname = "m3-ares";
+  outputs =
+    {
+      self,
+      agenix,
+      dotfiles,
+      home-manager,
+      nixpkgs,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+      systems = [
+        "aarch64-linux"
+        "i686-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+
+      users = {
+        philipp = "lstr-261";
+        eugen = "stcr-s2907";
+      };
+      hosts = {
+        server = "sierpinski-23";
+        main-pc = "penrose-512";
+        mini-pc = "protektor-controller";
+      };
+    in
+    {
+      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      overlays = import ./overlays { inherit inputs outputs; };
+      homeManagerModules = import ./modules/home-manager;
+      nixosConfigurations = {
+        sierpinski-23 = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+            hostname = "sierpinski-23";
+          };
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/sierpinski-23
+            inputs.disko.nixosModules.disko
+            agenix.nixosModules.default
+          ];
         };
-        modules = [
-          ./hosts/m3-ares
-          agenix.nixosModules.default
-        ];
-      };
-      m3-atlas = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/m3-atlas
-          inputs.disko.nixosModules.disko
-          agenix.nixosModules.default
-        ];
-      };
-      m3-kratos = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs;
-          hostname = "m3-kratos";
+        penrose-512 = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+            hostname = "penrose-512";
+          };
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/penrose-512
+            inputs.disko.nixosModules.disko
+            agenix.nixosModules.default
+          ];
         };
-        modules = [
-          ./hosts/m3-kratos
-          agenix.nixosModules.default
-        ];
       };
-      m3-helios = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/m3-helios
-          inputs.disko.nixosModules.disko
-          agenix.nixosModules.default
-        ];
+      homeConfigurations = {
+        "lstr-261@penrose-512" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            hostname = "penrose-512";
+          };
+          modules = [ ./home/m3tam3re/m3tam3re-ares.nix ];
+        };
       };
     };
-    homeConfigurations = {
-      "m3tam3re@m3-ares" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = {
-          inherit inputs outputs;
-          hostname = "m3-ares";
-        };
-        modules = [./home/m3tam3re/m3tam3re-ares.nix];
-      };
-    };
-  };
 }

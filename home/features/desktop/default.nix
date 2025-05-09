@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./coding.nix
     ./crypto.nix
@@ -10,7 +11,6 @@
     ./rofi.nix
     ./theme.nix
     ./wayland.nix
-    ./wofi.nix
   ];
 
   xdg = {
@@ -19,18 +19,18 @@
     mimeApps = {
       enable = true;
       associations.added = {
-        "application/zip" = ["org.gnome.FileRoller.desktop"];
-        "application/csv" = ["calc.desktop"];
-        "application/pdf" = ["okularApplication_pdf.desktop"];
+        "application/zip" = [ "org.gnome.FileRoller.desktop" ];
+        "application/csv" = [ "calc.desktop" ];
+        "application/pdf" = [ "okularApplication_pdf.desktop" ];
       };
       defaultApplications = {
-        "application/zip" = ["org.gnome.FileRoller.desktop"];
-        "application/csv" = ["calc.desktop"];
-        "application/pdf" = ["okularApplication_pdf.desktop"];
-        "application/md" = ["nvim.desktop"];
-        "application/text" = ["nvim.desktop"];
-        "x-scheme-handler/http" = ["io.github.zen_browser.zen"];
-        "x-scheme-handler/https" = ["io.github.zen_browser.zen"];
+        "application/zip" = [ "org.gnome.FileRoller.desktop" ];
+        "application/csv" = [ "calc.desktop" ];
+        "application/pdf" = [ "okularApplication_pdf.desktop" ];
+        "application/md" = [ "nvim.desktop" ];
+        "application/text" = [ "nvim.desktop" ];
+        "x-scheme-handler/http" = [ "io.github.zen_browser.zen" ];
+        "x-scheme-handler/https" = [ "io.github.zen_browser.zen" ];
       };
     };
     userDirs = {
@@ -48,7 +48,11 @@
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
   };
-  home.sessionPath = ["\${XDG_BIN_HOME}" "\${HOME}/.cargo/bin" "$HOME/.npm-global/bin"];
+  home.sessionPath = [
+    "\${XDG_BIN_HOME}"
+    "\${HOME}/.cargo/bin"
+    "$HOME/.npm-global/bin"
+  ];
 
   fonts.fontconfig.enable = true;
 
@@ -58,9 +62,13 @@
       enableFishIntegration = true;
       enableBashIntegration = true;
     };
-    font = {name = "Fira Code";};
+    font = {
+      name = "Fira Code";
+    };
     themeFile = "Dracula";
-    settings = {copy_on_select = "yes";};
+    settings = {
+      copy_on_select = "yes";
+    };
   };
 
   home.pointerCursor = {
